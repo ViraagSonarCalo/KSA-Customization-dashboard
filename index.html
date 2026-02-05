@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>KSA Customization Dashboard</title>
+
+<!-- Chart.js + DataLabels plugin -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+/* PREMIUM HEADER */
+.premium-header {
+  padding: 22px 28px;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.main-title {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.6px;
+  text-shadow: 0 0 10px rgba(255,255,255,0.25);
+}
+
+.ksa-big {
+  font-size: 32px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.6px;
+  text-shadow: 0 0 10px rgba(255,255,255,0.25);
+}
+
+.calo-logo {
+  height: 42px;
+  opacity: 0.95;
+  transition: opacity 0.2s ease;
+}
+
+.calo-logo:hover {
+  opacity: 1;
+}
+
+.saudi-flag {
+  height: 36px;
+  border-radius: 4px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.4);
+}
+
+/* KPI SCORECARDS */
+.kpi-container {
+  display: flex;
+  gap: 20px;
+  padding: 20px 28px;
+}
+
+.kpi-card {
+  flex: 1;
+  background: #1e293b;
+  padding: 18px;
+  border-radius: 12px;
+  border: 1px solid #334155;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+.kpi-title {
+  font-size: 14px;
+  color: #94a3b8;
+  margin-bottom: 6px;
+}
+
+.kpi-value {
+  font-size: 26px;
+  font-weight: 700;
+  color: #38bdf8;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  background: #1e293b;
+  border-bottom: 1px solid #334155;
+}
+
+.tab-btn {
+  padding: 12px 20px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.tab-btn.active {
+  color: #fff;
+  border-bottom: 3px solid #3b82f6;
+}
+
+.tab-content {
+  display: none;
+  padding: 20px;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Layout */
+.grid-2x2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background: #1e293b;
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid #334155;
+}
+
+.card h3 {
+  margin: 0 0 8px;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+th {
+  background: #0f172a;
+  color: #f8fafc;
+  padding: 10px;
+  border-bottom: 2px solid #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+td {
+  padding: 8px;
+  border-bottom: 1px solid #334155;
+}
+
+tr:nth-child(even) {
+  background: #1e293b;
+}
+
+tr:nth-child(odd) {
+  background: #162033;
+}
+
+tr:hover {
+  background: #334155;
+}
+
+.highlight {
+  font-weight: bold;
+  color: #38bdf8;
+}
+
+.analysis {
+  max-width: 900px;
+  line-height: 1.6;
+}
+</style>
+</head>
+
+<body>
+
+<header class="premium-header">
+
+  <div class="header-left">
+    <img 
+      src="https://s3-eu-west-1.amazonaws.com/tpd/logos/675869bbe34ca87255d4f0b8/0x0.png"
+      alt="Calo Logo"
+      class="calo-logo"
+    >
+    <h1 class="main-title">Customization Feature Dashboard</h1>
+  </div>
+
+  <div class="header-right">
+    <span class="ksa-big">KSA</span>
+    <img 
+      src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Flag_of_Saudi_Arabia.svg"
+      alt="Saudi Flag"
+      class="saudi-flag"
+    >
+  </div>
+
+</header>
+
+<!-- KPI SCORECARDS -->
+<div class="kpi-container">
+  <div class="kpi-card">
+    <div class="kpi-title">Latest Customization %</div>
+    <div class="kpi-value">16.5% - February 26 </div>
+  </div>
+
+  <div class="kpi-card">
+    <div class="kpi-title">Highest Month</div>
+    <div class="kpi-value">16.7% - July 25 </div>
+  </div> 
+
+  <div class="kpi-card">
+    <div class="kpi-title">SA02 Peak Load</div>
+    <div class="kpi-value">19% - July 25</div>
+  </div>
+
+  <div class="kpi-card">
+    <div class="kpi-title">Avg. KSA Customization up to date</div>
+    <div class="kpi-value">16.2%</div>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab-btn active" data-tab="tab1">Charts</button>
+  <button class="tab-btn" data-tab="tab2">Data Tables</button>
+  <button class="tab-btn" data-tab="tab3">Analysis</button>
+</div>
+
+<!-- TAB 1: CHARTS -->
+<div id="tab1" class="tab-content active">
+  <div class="grid-2x2">
+    <div class="card">
+      <h3>KSA – Customization Feature</h3>
+      <canvas id="ksaStacked"></canvas>
+    </div>
+
+    <div class="card">
+      <h3>KSA – Total Customization % (MoM)</h3>
+      <canvas id="ksaMom"></canvas>
+    </div>
+
+    <div class="card">
+      <h3>Riyadh Kitchen (SA01)</h3>
+      <canvas id="sa01"></canvas>
+    </div>
+
+    <div class="card">
+      <h3>Jeddah Kitchen (SA02)</h3>
+      <canvas id="sa02"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 2: DATA TABLES -->
+<div id="tab2" class="tab-content">
+
+<h3>Months (KSA)</h3>
+<table>
+<tr>
+  <th>Month</th><th>Modified</th><th>Custom+MCM</th><th>Athlete</th>
+  <th class="highlight">Customization%</th><th>Regular Deliveries</th>
+</tr>
+<tr><td>July 2025</td><td>7.2%</td><td>5.5%</td><td>3.8%</td><td class="highlight">16.7%</td><td>83.3%</td></tr>
+<tr><td>August 2025</td><td>7.4%</td><td>4.8%</td><td>4.1%</td><td class="highlight">16.4%</td><td>83.6%</td></tr>
+<tr><td>September 2025</td><td>7.1%</td><td>5.0%</td><td>3.6%</td><td class="highlight">15.6%</td><td>84.4%</td></tr>
+<tr><td>October 2025</td><td>7.0%</td><td>5.1%</td><td>3.5%</td><td class="highlight">15.5%</td><td>84.5%</td></tr>
+<tr><td>November 2025</td><td>7.0%</td><td>5.2%</td><td>3.5%</td><td class="highlight">15.7%</td><td>84.3%</td></tr>
+<tr><td>December 2025</td><td>7.3%</td><td>5.3%</td><td>3.5%</td><td class="highlight">16.1%</td><td>83.9%</td></tr>
+<tr><td>January 2026</td><td>7.2%</td><td>5.3%</td><td>3.6%</td><td class="highlight">16.1%</td><td>83.9%</td></tr>
+<tr><td>February 2026</td><td>7.4%</td><td>5.4%</td><td>3.8%</td><td class="highlight">16.5%</td><td>83.5%</td></tr>
+</table>
+
+<h3>Months (SA01)</h3>
+<table>
+<tr>
+  <th>Month</th><th>Modified</th><th>Custom+MCM</th><th>Athlete</th>
+  <th class="highlight">Customization%</th><th>Regular Deliveries</th>
+</tr>
+<tr><td>July 2025</td><td>7.3%</td><td>4.9%</td><td>3.8%</td><td class="highlight">15.8%</td><td>84.2%</td></tr>
+<tr><td>August 2025</td><td>7.5%</td><td>4.1%</td><td>4.2%</td><td class="highlight">15.8%</td><td>84.2%</td></tr>
+<tr><td>September 2025</td><td>7.3%</td><td>4.9%</td><td>3.6%</td><td class="highlight">15.8%</td><td>84.2%</td></tr>
+<tr><td>October 2025</td><td>7.2%</td><td>4.9%</td><td>3.6%</td><td class="highlight">15.7%</td><td>84.3%</td></tr>
+<tr><td>November 2025</td><td>7.3%</td><td>4.9%</td><td>3.7%</td><td class="highlight">15.9%</td><td>84.1%</td></tr>
+<tr><td>December 2025</td><td>7.2%</td><td>4.9%</td><td>3.7%</td><td class="highlight">15.8%</td><td>84.2%</td></tr>
+<tr><td>January 2026</td><td>7.3%</td><td>5.0%</td><td>3.7%</td><td class="highlight">16.0%</td><td>84.0%</td></tr>
+<tr><td>February 2026</td><td>7.1%</td><td>5.1%</td><td>4.0%</td><td class="highlight">16.3%</td><td>83.7%</td></tr>
+</table>
+
+<h3>Months (SA02)</h3>
+<table>
+<tr>
+  <th>Month</th><th>Modified</th><th>Custom+MCM</th><th>Athlete</th>
+  <th class="highlight">Customization%</th><th>Regular Deliveries</th>
+</tr>
+<tr><td>July 2025</td><td>7.1%</td><td>7.3%</td><td>3.8%</td><td class="highlight">18.2%</td><td>81.8%</td></tr>
+<tr><td>August 2025</td><td>7.1%</td><td>6.8%</td><td>3.9%</td><td class="highlight">17.8%</td><td>82.2%</td></tr>
+<tr><td>September 2025</td><td>7.1%</td><td>6.5%</td><td>3.6%</td><td class="highlight">17.2%</td><td>82.8%</td></tr>
+<tr><td>October 2025</td><td>7.0%</td><td>6.3%</td><td>3.6%</td><td class="highlight">16.9%</td><td>83.1%</td></tr>
+<tr><td>November 2025</td><td>7.0%</td><td>6.2%</td><td>3.4%</td><td class="highlight">16.6%</td><td>83.4%</td></tr>
+<tr><td>December 2025</td><td>7.0%</td><td>6.0%</td><td>3.4%</td><td class="highlight">16.4%</td><td>83.6%</td></tr>
+<tr><td>January 2026</td><td>7.2%</td><td>5.9%</td><td>3.4%</td><td class="highlight">16.5%</td><td>83.5%</td></tr>
+<tr><td>February 2026</td><td>8.3%</td><td>5.8%</td><td>3.3%</td><td class="highlight">17.4%</td><td>82.6%</td></tr>
+</table>
+
+</div>
+
+<!-- TAB 3: ANALYSIS -->
+<div id="tab3" class="tab-content">
+<div class="analysis">
+  <h2>Short Analytical Summary</h2>
+
+  <p><strong>1. KSA Overall Trend</strong><br>
+  Customization levels remain stable between 15.5% and 16.7%, showing consistent customer appetite for modified or custom solutions.</p>
+
+  <p><strong>2. Feature Mix</strong><br>
+  Modified is the dominant customization type, followed by Custom+MCM. Athlete remains the smallest but steady category.</p>
+
+  <p><strong>3. Riyadh vs Jeddah</strong><br>
+  SA01 (Riyadh) shows stable mid‑range customization, while SA02 (Jeddah) consistently runs higher, driven by stronger Custom+MCM demand.</p>
+
+  <p><strong>4. Operational Insight</strong><br>
+  High stability means predictable planning. SA02 may require more capacity or automation focus due to higher customization load.</p>
+</div>
+</div>
+
+<script>
+// Tab switching
+document.querySelectorAll(".tab-btn").forEach(btn => {
+  btn.onclick = () => {
+    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".tab-content").forEach(t => t.classList.remove("active"));
+    btn.classList.add("active");
+    document.getElementById(btn.dataset.tab).classList.add("active");
+  };
+});
+
+// Chart labels
+const labels = ["Jul 25","Aug 25","Sep 25","Oct 25","Nov 25","Dec 25","Jan 26","Feb 26"];
+
+// Global plugin registration
+Chart.register(ChartDataLabels);
+
+// KSA stacked chart
+new Chart(ksaStacked, {
+  type: "bar",
+  data: {
+    labels,
+    datasets: [
+      { label: "Modified", data: [7.2,7.4,7.1,7.0,7.0,7.3,7.2,7.4], backgroundColor: "#3b82f6" },
+      { label: "Custom+MCM", data: [5.5,4.8,5.0,5.1,5.2,5.3,5.3,5.4], backgroundColor: "#1e40af" },
+      { label: "Athlete", data: [3.8,4.1,3.6,3.5,3.5,3.5,3.6,3.8], backgroundColor: "#f97316" }
+    ]
+  },
+  options: {
+    plugins: {
+      datalabels: {
+        color: "#fff",
+        anchor: "end",
+        align: "top",
+        formatter: v => v + "%"
+      }
+    },
+    responsive: true,
+    scales: { x: { stacked: true }, y: { stacked: true } }
+  }
+});
+
+// KSA MoM
+new Chart(ksaMom, {
+  type: "line",
+  data: {
+    labels,
+    datasets: [{
+      label: "Customization %",
+      data: [16.7,16.4,15.6,15.5,15.7,16.1,16.1,16.5],
+      borderColor: "#10b981",
+      backgroundColor: "rgba(16,185,129,0.2)",
+      fill: true,
+      tension: 0.3
+    }]
+  },
+  options: {
+    plugins: {
+      datalabels: {
+        color: "#10b981",
+        anchor: "end",
+        align: "top",
+        formatter: v => v + "%"
+      }
+    }
+  }
+});
+
+// SA01
+new Chart(sa01, {
+  type: "bar",
+  data: {
+    labels,
+    datasets: [
+      { label: "Modified", data: [7.3,7.5,7.3,7.2,7.3,7.2,7.3,7.1], backgroundColor: "#3b82f6" },
+      { label: "Custom+MCM", data: [4.9,4.1,4.9,4.9,4.9,4.9,5.0,5.1], backgroundColor: "#1e40af" },
+      { label: "Athlete", data: [3.8,4.2,3.6,3.6,3.7,3.7,3.7,4.0], backgroundColor: "#f97316" }
+    ]
+  },
+  options: {
+    plugins: {
+      datalabels: {
+        color: "#fff",
+        anchor: "end",
+        align: "top",
+        formatter: v => v + "%"
+      }
+    }
+  }
+});
+
+// SA02
+new Chart(sa02, {
+  type: "bar",
+  data: {
+    labels,
+    datasets: [
+      { label: "Modified", data: [7.1,7.1,7.1,7.0,7.0,7.0,7.2,8.3], backgroundColor: "#3b82f6" },
+      { label: "Custom+MCM", data: [7.3,6.8,6.5,6.3,6.2,6.0,5.9,5.8], backgroundColor: "#1e40af" },
+      { label: "Athlete", data: [3.8,3.9,3.6,3.6,3.4,3.4,3.4,3.3], backgroundColor: "#f97316" }
+    ]
+  },
+  options: {
+    plugins: {
+      datalabels: {
+        color: "#fff",
+        anchor: "end",
+        align: "top",
+        formatter: v => v + "%"
+      }
+    }
+  }
+});
+</script>
+
+</body>
+</html>
