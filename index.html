@@ -205,7 +205,7 @@ new Chart(document.getElementById('ksaStacked'), {
 new Chart(document.getElementById('ksaMom'), {
   type:'line',
   data:{labels:ksa.labels,datasets:[{label:'Customization %',data:ksa.total,borderColor:'#10b981',backgroundColor:'rgba(16,185,129,0.2)',fill:true,tension:0.3}]},
-  options:{plugins:{datalabels:{color:'#10b981',anchor:'end',align:'top',formatter:v=>v+'%'}}}
+  options:{plugins:{datalabels:false}} // <-- data labels removed
 });
 
 [new Chart(document.getElementById('sa01'), {
